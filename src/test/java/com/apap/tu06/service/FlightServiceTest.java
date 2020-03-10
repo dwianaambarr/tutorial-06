@@ -27,9 +27,9 @@ public class FlightServiceTest {
 	@MockBean
 	private FlightDb flightDb;
 	
-	@TestConfiguration //Membatasi scope Bean yang didefinisikan menajdi local class
+	@TestConfiguration 
 	static class FlightServiceTestContextConfiguration{
-		@Bean //inisiasi flightService sebagai Bean
+		@Bean 
 		public FlightService flightService() {
 			return new FlightServiceImpl();
 		}
@@ -47,10 +47,10 @@ public class FlightServiceTest {
 		Mockito.when(flightDb.findByFlightNumber(flight.get().getFlightNumber())).thenReturn(flight);
 		
 		//When
-		Optional<FlightModel> found = flightService.getFlightDetailByFlightNumber(flight.get().getFlightNumber()); //
+		Optional<FlightModel> found = flightService.getFlightDetailByFlightNumber(flight.get().getFlightNumber()); 
 	
 		//Then
-		assertThat(found, Matchers.notNullValue()); // Check if not null
-		assertThat(found.get().getFlightNumber(), Matchers.equalTo(flightModel.getFlightNumber())); //Check if same
+		assertThat(found, Matchers.notNullValue()); 
+		assertThat(found.get().getFlightNumber(), Matchers.equalTo(flightModel.getFlightNumber())); 
 	}
 }

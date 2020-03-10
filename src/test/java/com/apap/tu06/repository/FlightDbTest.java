@@ -30,7 +30,7 @@ public class FlightDbTest {
 	
 	@Test
 	public void whenFindByFlightNumber_thenReturnFlight() {
-		//Given, inisiasi objek yang akan menjadi sebuah entitas pada database untuk dites
+		//Given
 		
 		PilotModel pilotModel = new PilotModel();
 		pilotModel.setLicenseNumber("999");
@@ -48,12 +48,12 @@ public class FlightDbTest {
 		entityManager.persist(flightModel);
 		entityManager.flush();
 		
-		//When, dilakukan pemanggilan method yang ingin dites
+		//When
 		Optional<FlightModel> found = flightDb.findByFlightNumber(flightModel.getFlightNumber());
 		
-		//Then, dilakukan pengecekan terhadap objek baru apakah dia null atau sesuai dengan objek awal yang telah diinisiasi yang telah disiapkan sebelumnya
-		assertThat(found.get(), Matchers.notNullValue()); // Check if not null
-		assertThat(found.get(), Matchers.equalTo(flightModel)); // Check if same
+		//Then
+		assertThat(found.get(), Matchers.notNullValue());
+		assertThat(found.get(), Matchers.equalTo(flightModel));
 	}
 
 }
